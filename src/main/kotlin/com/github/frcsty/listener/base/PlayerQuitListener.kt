@@ -16,6 +16,10 @@ class PlayerQuitListener(private val loader:Loader) : Listener {
 
     @EventHandler
     fun onPlayerLeave(event: PlayerQuitEvent) {
+
+        // If the quit message is already empty, assume that this event isn't supposed to run
+        if (event.quitMessage.equals("")) return
+
         event.quitMessage = ""
 
         val manager = loader.formatManager

@@ -6,14 +6,17 @@ import org.bukkit.event.HandlerList
 
 class FrozenJoinEvent(private val player: Player, private val actions: List<String>) : Event() {
 
-    private val handlers = HandlerList()
 
-    fun getHandlerList(): HandlerList? {
-        return handlers
+    companion object {
+        @JvmStatic private val handlers = HandlerList()
+        @JvmStatic
+        fun getHandlerList(): HandlerList {
+            return handlers
+        }
     }
 
     override fun getHandlers(): HandlerList {
-        return handlers
+        return getHandlerList()
     }
 
     fun getPlayer(): Player {
