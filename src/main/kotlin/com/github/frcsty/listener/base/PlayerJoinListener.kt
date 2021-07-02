@@ -17,6 +17,10 @@ class PlayerJoinListener(private val loader: Loader) : Listener {
 
     @EventHandler
     fun onPlayerJoin(event: PlayerJoinEvent) {
+
+        // If the join message is already empty, assume that this event isn't supposed to run
+        if (event.joinMessage.equals("")) return
+
         event.joinMessage = ""
 
         val actionHandler = loader.actionHandler
